@@ -1,0 +1,197 @@
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="{% static 'styles/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'semantic/semantic.min.css' %}">
+</head>
+<body class="main-content light-mode">
+    <header class="section sec1 header active" id="home">
+        <div class="header-content">
+            {% for hpage in homepage %}
+            <div class="left-header">
+                <div class="h-shape"></div>
+                <div class="image">
+                    <img src="{{ hpage.banner.url }}" alt="">
+                </div>
+            </div>
+            <div class="right-header">
+                <h1 class="name">
+                    <span>{{ hpage.title }}</span>
+                </h1>
+                <p>
+                    {{ hpage.mybio }}
+                </p>
+                <div class="btn-con">
+                    <a href="{{ hpage.mycvfile.url }}" class="main-btn">
+                        <span class="btn-text">Download CV</span>
+                        <span class="btn-icon"><i class="cloud download icon"></i></span>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </header>
+    <main>
+        <section class="section sec2 about" id="about">
+            <div class="main-title">
+                <h2>Men <span>haqimda</span><span class="bg-text">Men haqimda</span></h2>
+            </div>
+            <div class="about-container">
+                {% for apage in aboutpage %}
+                <div class="left-about">
+                    <h4>{{ apage.title }}</h4>
+                    <p>
+                        {{ apage.description }}
+                    </p>
+                </div>
+                {% endfor %}
+                <div class="right-about">
+                    {% for cpage in cardpage %}
+                    <div class="about-item">
+                        <div class="abt-text">
+                            <p class="large-text">{{ cpage.numbers }}+</p>
+                            <p class="small-text">{{ cpage.title }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="about-stats">
+                <h4 class="stat-title">Mening mahoratlarim</h4>
+
+                <div class="progress-bars">
+                    {% for spage in skillpage %}
+                        <div class="progress-bar">
+                            <p class="prog-title">{{ spage.title }}</p>
+                            <div class="progress-con">
+                                <p class="prog-text">{{ spage.knowledge }}</p>
+                                <div class="progress">
+                                    <span class="html"></span>
+                                </div>
+                            </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+        <section class="section sec3" id="portfolio">
+            <div class="main-title">
+                <h2>Mening <span>Portfoliam</span></h2>
+            </div>
+            <p class="port-text">
+               <strong> Men tayyorlagan va qatnashgan loyihalar haqida qisqacha ma'lumotlar:</strong>
+            </p>
+            <div class="portfolios">
+                {% for ppage in portfoliopage %}
+                <div class="portfolio-item">
+                    <div class="image">
+                        <img src="{{ ppage.image.url }}" alt="">
+                    </div>
+                </div>
+                    {% endfor %}
+            </div>
+        </section>
+        <section class="section sec4 " id="blogs">
+            <div class="blogs-content">
+                <div class="main-title">
+                    <h2>Mening <span>Bloglarim</span></h2>
+                </div>
+                <div class="blogs">
+                    {% for bpage in blogpage %}
+                    <div class="blog">
+                        <img src="{{ bpage.image.url }}" alt="">
+                        <div class="blog-text">
+                            <h4>
+                                {{ bpage.title }}
+                            </h4>
+                            <p>
+                                {{ bpage.description }}
+                            </p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section class="section sec5 contact" id="contact">
+            <div class="contact-container">
+                <div class="main-title">
+                    <h2><span>Bog'lanish</span><span class="bg-text">Bog'lanish </span></h2>
+                </div>
+                <div class="contact-content-con">
+                    <div class="left-contact">
+                        {% for cpage in contactpage %}
+                        <h4>{{ cpage.title }}</h4>
+                        <p>
+                            {{ cpage.description }}
+                        </p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="building outline icon"></i>
+                                    <span>Location: {{ cpage.mylocation }}</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="envelope open icon"></i>
+                                    <span>Email: {{ cpage.myemail }}</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="graduation cap icon"></i>
+                                    <span>Education: {{ cpage.myedu }}</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="phone square icon"></i>
+                                    <span>Mobile Number: {{ cpage.mynumber }}</span>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="icon">
+                                    <i class="language icon"></i>
+                                    <span>Languages: {{ cpage.langugages }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="right-contact">
+                        <map>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193357.78211530886!2d72.17956141099816!3d40.779279653733376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38bc901d6b13d4ef%3A0xfc45bcaa7973dfac!2sAndijan!5e0!3m2!1sen!2s!4v1648466355484!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </map>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="controlls">
+        <div class="control  control-1 active-btn" data-id="home" >
+            <i class="home icon" style="color: white;"></i>
+        </div>
+        <div class="control control-2 " data-id="about">
+            <i class="user circle outline icon" style="color: white;"></i>
+        </div>
+        <div class="control control-3" data-id="portfolio">
+            <i class="suitcase icon" style="color: white;"></i>
+        </div>
+        <div class="control control-4" data-id="blogs">
+            <i class="newspaper outline icon" style="color: white;"></i>
+        </div>
+        <div class="control control-5" data-id="contact">
+            <i class="address book outline icon" style="color: white;"></i>
+        </div>
+    </div>
+    <script src="{% static 'app.js' %}"></script>
+</body>
+</html>
